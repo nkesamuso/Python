@@ -40,6 +40,16 @@ name = "Muso"
 sex = "Femaale"
 hobby = "Sleeping"
 
+#string manipulation
+greeting = "Hello, " + name + "! Welcome to the world of Python."
+print(greeting)
+#string methods
+upper_name = name.upper()
+print("Uppercase Name:", upper_name)
+ #slicing
+first_three_letters = name[0:3]
+print("First three letters of name:", first_three_letters)
+
 #integers
 age = 24
 
