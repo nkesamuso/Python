@@ -97,3 +97,24 @@ print("Updated Person Dictionary:", person)
 #set
 unique_numbers = {1, 2, 3, 4, 5}
 print("Unique Numbers Set:", unique_numbers)
+
+
+#loops
+#for loop
+print("For Loop:")
+for i in range(5):
+    print("Iteration:", i)  
+
+#while loop
+print("While Loop:")
+count = 0
+while count < 5:
+    print("Count:", count)
+    count += 1
+#nested loop
+print("Nested Loop:")
+for i in range(3):
+    for j in range(2):
+        print(f"i: {i}, j: {j}")
+        
+
