@@ -118,3 +118,13 @@ for i in range(3):
         print(f"i: {i}, j: {j}")
         
 
+# conditional statements
+temp = 32
+if temp > 37:
+    print("You have a fever.")
+elif temp == 37:
+    print("Your temperature is normal.")
+else:
+    print("You have a low temperature.")        
+
+
