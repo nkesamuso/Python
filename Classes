@@ -4,19 +4,95 @@ class Dog:
         self.name = name  
         self.age = age    
     
-
+    # Instance methods
     def bark(self):
         print(f"{self.name} says: Woof!")
     
     def get_info(self):
         return f"{self.name} is {self.age} years old"
 
+    def age_in_human_years(self):
+        return self.age * 7
+
+    def celebrate_birthday(self):
+        self.age += 1
+        print(f"Happy birthday, {self.name}! Now {self.age} years old.")
+
+    def is_puppy(self):
+        return self.age < 1
+
+    def rename(self, new_name):
+        self.name = new_name
+
+    def __str__(self):
+        return f"{self.name} ({self.age} yrs)"
+
+    # Class and static methods
+    @classmethod
+    def from_string(cls, data):
+        name, age = data.split("-")
+        return cls(name, int(age))
+
+    @staticmethod
+    def bark_sound():
+        return "Woof!"
+
+# Subclasses demonstrating inheritance and polymorphism
+class Puppy(Dog):
+    def __init__(self, name, age=0):
+        super().__init__(name, age)
+
+    # Puppies fetch and are considered puppies for a bit longer
+    def fetch(self, item="ball"):
+        print(f"{self.name} fetches the {item}!")
+
+    def is_puppy(self):
+        return self.age < 2
+
+
+class WorkingDog(Dog):
+    def __init__(self, name, age, job):
+        super().__init__(name, age)
+        self.job = job
+
+    def perform_task(self):
+        print(f"{self.name} is performing their job: {self.job}")
+
+    def get_info(self):
+        return f"{self.name} ({self.age} yrs) - Job: {self.job}"
+
+
 # Creating objects (instances)
 dog1 = Dog("Buddy", 3)
 dog2 = Dog("Max", 5)
+dog3 = Dog.from_string("Luna-2")
+puppy = Puppy("Coco", 1)
+work = WorkingDog("Rex", 4, "Guide")
 
-print(dog1.name)  
-print(dog2.age)   # 
+print(dog1.name)
+print(dog2.age)
 
-dog1.bark()  
-print(dog2.get_info()) 
+dog1.bark()
+print(dog2.get_info())
+
+print(dog3)
+print("Human years:", dog3.age_in_human_years())
+dog3.celebrate_birthday()
+print("Is puppy:", dog3.is_puppy())
+print("Bark sound static:", Dog.bark_sound())
+dog3.rename("Luna-Belle")
+print("Renamed:", dog3)
+
+# Demonstrate subclass behavior and polymorphism
+print("--- Subclass examples ---")
+puppy.bark()
+puppy.fetch()
+print("Puppy check (is_puppy):", puppy.is_puppy())
+
+work.bark()
+work.perform_task()
+print(work.get_info())
+
+# Polymorphism: treat all as Dogs
+for animal in (dog1, puppy, work):
+    print(f"{animal} -> bark sound: {animal.bark_sound()}")
