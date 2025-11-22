@@ -10,8 +10,7 @@ def number_guessing_game():
     
     while attempts < max_attempts:
         guess = int(input(f"\nAttempt {attempts + 1}/{max_attempts} - Enter your guess: "))
-        attempts += 1
-        
+        attempts += 1      
         if guess == secret_number:
             print(f"🎉 Congratulations! You guessed it in {attempts} attempts!")
             break
