@@ -29,3 +29,27 @@ except Exception as exc:
 		sys.exit(1)
 	# When imported, raise so importers can handle the failure explicitly
 	raise
+
+
+print("=" * 80)
+print("NUMPY BASICS FOR DATA PREPROCESSING")
+print("=" * 80)
+
+# Creating arrays
+arr = np.array([1, 2, 3, 4, 5])
+print(f"\n1. Basic array: {arr}")
+
+# 2D array (matrix)
+matrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(f"\n2. 2D array:\n{matrix}")
+
+# Array properties
+print(f"\nShape: {matrix.shape}")
+print(f"Data type: {matrix.dtype}")
+print(f"Dimensions: {matrix.ndim}")
+
+# Array creation functions
+zeros = np.zeros((3, 4))
+ones = np.ones((2, 3))
+random_arr = np.random.rand(3, 3)
+print(f"\n3. Zeros array:\n{zeros}")
