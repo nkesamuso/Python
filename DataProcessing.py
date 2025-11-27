@@ -63,7 +63,7 @@ def _demo_numpy_examples() -> None:
 	random_arr = np.random.rand(3, 3)
 	print(f"\n3. Zeros array:\n{zeros}")
 
-
+# Pandas basics, series and DataFrame examples
 def _demo_pandas_examples() -> None:
 	print("\n" + "=" * 80)
 	print("PANDAS BASICS - SERIES AND DATAFRAMES")
@@ -94,6 +94,7 @@ if __name__ == '__main__':
 	_demo_numpy_examples()
 	_demo_pandas_examples()
 
+# Data loading techniques demonstration
 print("\n" + "=" * 80)
 print("DATA LOADING TECHNIQUES")
 print("=" * 80)
@@ -118,3 +119,25 @@ print("\n2. Reading data from files:")
 print("# df = pd.read_csv('data.csv')")
 print("# df = pd.read_excel('data.xlsx')")
 print("# df = pd.read_json('data.json')")
+
+
+print("\n" + "=" * 80)
+print("DATA INSPECTION")
+print("=" * 80)
+
+print("\n1. First few rows:")
+print(df_students.head(3))
+
+print("\n2. Last few rows:")
+print(df_students.tail(3))
+
+print("\n3. Basic statistics:")
+print(df_students.describe())
+
+print("\n4. Data types:")
+print(df_students.dtypes)
+
+print("\n5. Shape and dimensions:")
+print(f"Shape: {df_students.shape}")
+print(f"Number of rows: {len(df_students)}")
+print(f"Number of columns: {len(df_students.columns)}")
