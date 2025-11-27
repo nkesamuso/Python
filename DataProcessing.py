@@ -31,25 +31,66 @@ except Exception as exc:
 	raise
 
 
-print("=" * 80)
-print("NUMPY BASICS FOR DATA PREPROCESSING")
-print("=" * 80)
+def _demo_numpy_examples() -> None:
+	"""Small demo printed only when running the module as a script.
 
-# Creating arrays
-arr = np.array([1, 2, 3, 4, 5])
-print(f"\n1. Basic array: {arr}")
+	Keeping examples inside a function and only calling it under
+	`if __name__ == '__main__'` prevents side-effects when the module
+	is imported from other code (and explains why you might see no
+	output if you only imported the module).
+	"""
 
-# 2D array (matrix)
-matrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-print(f"\n2. 2D array:\n{matrix}")
+	print("=" * 80)
+	print("NUMPY BASICS FOR DATA PREPROCESSING")
+	print("=" * 80)
 
-# Array properties
-print(f"\nShape: {matrix.shape}")
-print(f"Data type: {matrix.dtype}")
-print(f"Dimensions: {matrix.ndim}")
+	# Creating arrays
+	arr = np.array([1, 2, 3, 4, 5])
+	print(f"\n1. Basic array: {arr}")
 
-# Array creation functions
-zeros = np.zeros((3, 4))
-ones = np.ones((2, 3))
-random_arr = np.random.rand(3, 3)
-print(f"\n3. Zeros array:\n{zeros}")
+	# 2D array (matrix)
+	matrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+	print(f"\n2. 2D array:\n{matrix}")
+
+	# Array properties
+	print(f"\nShape: {matrix.shape}")
+	print(f"Data type: {matrix.dtype}")
+	print(f"Dimensions: {matrix.ndim}")
+
+	# Array creation functions
+	zeros = np.zeros((3, 4))
+	ones = np.ones((2, 3))
+	random_arr = np.random.rand(3, 3)
+	print(f"\n3. Zeros array:\n{zeros}")
+
+
+def _demo_pandas_examples() -> None:
+	print("\n" + "=" * 80)
+	print("PANDAS BASICS - SERIES AND DATAFRAMES")
+	print("=" * 80)
+
+	# Creating a Series
+	series = pd.Series([10, 20, 30, 40, 50], index=['a', 'b', 'c', 'd', 'e'])
+	print(f"\n1. Pandas Series:\n{series}")
+
+	# Creating a DataFrame
+	data = {
+		'Name': ['John', 'Anna', 'Peter', 'Linda', 'James'],
+		'Age': [28, 34, 29, 32, 45],
+		'City': ['New York', 'Paris', 'London', 'Berlin', 'Tokyo'],
+		'Salary': [50000, 60000, 55000, 62000, 70000]
+	}
+	df = pd.DataFrame(data)
+	print(f"\n2. Basic DataFrame:\n{df}")
+
+	# DataFrame info
+	print(f"\n3. DataFrame Info:")
+	print(df.info())
+	print(f"\nShape: {df.shape}")
+	print(f"Columns: {df.columns.tolist()}")
+
+
+if __name__ == '__main__':
+	_demo_numpy_examples()
+	_demo_pandas_examples()
+

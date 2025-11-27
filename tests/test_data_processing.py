@@ -19,7 +19,10 @@ class DataProcessingImportTest(unittest.TestCase):
             self.assertIn("install with: python -m pip install pandas", err.output)
         else:
             # Import succeeded — ensure we didn't print the missing dependency message
+            # and that the demo examples are not executed at import time
             self.assertNotIn("Missing or broken dependency 'pandas'", out)
+            self.assertNotIn("NUMPY BASICS", out)
+            self.assertNotIn("PANDAS BASICS", out)
 
 
 if __name__ == '__main__':
