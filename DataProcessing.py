@@ -94,3 +94,27 @@ if __name__ == '__main__':
 	_demo_numpy_examples()
 	_demo_pandas_examples()
 
+print("\n" + "=" * 80)
+print("DATA LOADING TECHNIQUES")
+print("=" * 80)
+
+# Create sample data for demonstration
+sample_data = {
+    'student_id': range(1, 21),
+    'name': ['Student_' + str(i) for i in range(1, 21)],
+    'math_score': np.random.randint(50, 100, 20),
+    'english_score': np.random.randint(45, 95, 20),
+    'science_score': np.random.randint(40, 100, 20),
+    'attendance': np.random.uniform(70, 100, 20),
+    'age': np.random.randint(15, 19, 20)
+}
+df_students = pd.DataFrame(sample_data)
+
+print("\n1. Sample student dataset:")
+print(df_students.head())
+
+# Reading CSV (example syntax)
+print("\n2. Reading data from files:")
+print("# df = pd.read_csv('data.csv')")
+print("# df = pd.read_excel('data.xlsx')")
+print("# df = pd.read_json('data.json')")
