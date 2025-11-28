@@ -174,3 +174,53 @@ print("\n4. Forward fill and backward fill:")
 df_ffill = df_missing.fillna(method='ffill')  # Forward fill
 df_bfill = df_missing.fillna(method='bfill')  # Backward fill
 print("Forward fill and backward fill applied")
+
+
+print("\n" + "=" * 80)
+print("DATA CLEANING")
+print("=" * 80)
+
+# Create messy data
+df_messy = pd.DataFrame({
+    'Name': ['  John  ', 'ANNA', 'peter', '  Linda'],
+    'Email': ['john@email.com', 'ANNA@EMAIL.COM', 'peter@email', 'linda@email.com'],
+    'Phone': ['123-456-7890', '(123) 456-7890', '1234567890', '123.456.7890'],
+    'Salary': ['$50,000', '$60,000', '$55000', '$62,000']
+})
+
+print("\n1. Original messy data:")
+print(df_messy)
+
+print("\n2. Cleaning string data:")
+# Strip whitespace
+df_messy['Name'] = df_messy['Name'].str.strip()
+# Convert to title case
+df_messy['Name'] = df_messy['Name'].str.title()
+# Convert email to lowercase
+df_messy['Email'] = df_messy['Email'].str.lower()
+print(df_messy)
+
+print("\n3. Removing duplicates:")
+df_dup = pd.DataFrame({
+    'A': [1, 2, 2, 3, 4],
+    'B': [5, 6, 6, 7, 8]
+})
+print(f"Before: {len(df_dup)} rows")
+df_dup_cleaned = df_dup.drop_duplicates()
+print(f"After: {len(df_dup_cleaned)} rows")
+
+print("\n4. Handling outliers using IQR method:")
+# Using math scores
+Q1 = df_students['math_score'].quantile(0.25)
+Q3 = df_students['math_score'].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+print(f"Lower bound: {lower_bound:.2f}, Upper bound: {upper_bound:.2f}")
+
+# Filter outliers
+df_no_outliers = df_students[
+    (df_students['math_score'] >= lower_bound) & 
+    (df_students['math_score'] <= upper_bound)
+]
+print(f"Rows after removing outliers: {len(df_no_outliers)}")
