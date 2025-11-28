@@ -141,3 +141,36 @@ print("\n5. Shape and dimensions:")
 print(f"Shape: {df_students.shape}")
 print(f"Number of rows: {len(df_students)}")
 print(f"Number of columns: {len(df_students.columns)}")
+
+
+print("\n" + "=" * 80)
+print("HANDLING MISSING DATA")
+print("=" * 80)
+
+# Create dataset with missing values
+df_missing = df_students.copy()
+df_missing.loc[2, 'math_score'] = np.nan
+df_missing.loc[5, 'english_score'] = np.nan
+df_missing.loc[8, 'science_score'] = np.nan
+df_missing.loc[10, 'attendance'] = np.nan
+
+print("\n1. Detecting missing values:")
+print(f"Total missing values:\n{df_missing.isnull().sum()}")
+print(f"\nPercentage missing:\n{(df_missing.isnull().sum() / len(df_missing) * 100).round(2)}")
+
+print("\n2. Dropping missing values:")
+df_dropped = df_missing.dropna()
+print(f"Shape after dropping: {df_dropped.shape}")
+
+print("\n3. Filling missing values:")
+# Fill with mean
+df_filled = df_missing.copy()
+df_filled['math_score'].fillna(df_filled['math_score'].mean(), inplace=True)
+df_filled['english_score'].fillna(df_filled['english_score'].median(), inplace=True)
+df_filled['attendance'].fillna(df_filled['attendance'].mean(), inplace=True)
+print(f"Missing values after filling:\n{df_filled.isnull().sum()}")
+
+print("\n4. Forward fill and backward fill:")
+df_ffill = df_missing.fillna(method='ffill')  # Forward fill
+df_bfill = df_missing.fillna(method='bfill')  # Backward fill
+print("Forward fill and backward fill applied")
